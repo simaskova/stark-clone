@@ -14,6 +14,7 @@ const DivContainer = styled.div`
   height: 100vh;
   border-top: 1px solid ${theme.colors.lightgray};
   padding: 16px;
+  overflow: hidden;
 
   a {
     font-family: ${theme.fonts.basic};
