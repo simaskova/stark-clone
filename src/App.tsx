@@ -23,12 +23,16 @@ export const spacer_full = "16px";
 export const spacer_half = "8px";
 
 const DivContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: ${theme.colors.offwhite};
-  height: 100%;
-  width: 100vw;
+  overflow: hidden;
 `;
 
 const DivNavbar = styled.div`
@@ -80,7 +84,6 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-        <Footer />
       </DivContainer>
     </Router>
   );

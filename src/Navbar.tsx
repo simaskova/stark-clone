@@ -28,6 +28,7 @@ const StyledNavbar = styled.nav`
   max-width: 100%;
   height: 32px;
   padding: 16px;
+  overflow-x: hidden;
 
   a {
     display: flex;
@@ -50,14 +51,24 @@ const StyledNavbar = styled.nav`
 `;
 
 const NavbarMobile = styled(StyledNavbar)`
-  padding: 0 16px;
+  padding: 16px;
   a {
     font-size: 25px;
+  }
+
+  & :nth-child(1) {
+    flex: 1;
+  }
+  & :nth-child(2) {
+    flex: 3;
+  }
+  & :nth-child(3) {
+    flex: 1;
   }
 `;
 
 const NavbarDesktop = styled(StyledNavbar)`
-  width: 90%;
+  width: 100%;
 `;
 
 const DivPages = styled.div`
@@ -86,6 +97,7 @@ const ButtonSignUp = styled.button`
   letter-spacing: 0.1em;
   min-height: 32px;
   padding: 0 1rem;
+  width: 100px;
 
   :hover {
     background: ${theme.colors.violet};
