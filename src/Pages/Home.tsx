@@ -8,8 +8,8 @@ const Main = styled.main``;
 export default function Home() {
   return (
     <DivContainer>
-      <DivAbout></DivAbout>
-      <Main></Main>
+      <DivAbout>Home About</DivAbout>
+      <Main>Home Main</Main>
     </DivContainer>
   );
 }

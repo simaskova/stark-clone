@@ -13,7 +13,7 @@ const DivContainer = styled.div`
   width: 100vw;
   height: 100vh;
   border-top: 1px solid ${theme.colors.lightgray};
-  padding: ${spacer_full};
+  padding: 16px;
 
   a {
     font-family: ${theme.fonts.basic};
@@ -22,11 +22,11 @@ const DivContainer = styled.div`
     text-transform: uppercase;
     text-decoration: none;
     color: ${theme.colors.black};
-    padding: ${spacer_half} 0;
+    padding: 8px 0;
   }
 `;
 
-export default function NavOverlay({ show: any, onLinkClick }) {
+export default function NavOverlay({ show, onLinkClick }) {
   const handleClick = useCallback(
     (event) => {
       onLinkClick(!show);

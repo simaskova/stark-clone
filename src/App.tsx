@@ -15,6 +15,7 @@ import styled from "styled-components";
 import { theme } from "./theme";
 import createGlobalStyle from "./global"; // for getting rid of the offwhite in corners
 import { useEffect, useState } from "react";
+import "./App.css";
 
 export const DESKTOP_BREAKPOINT = 935;
 export const MOBILE_BREAKPOINT = 845;
@@ -39,7 +40,7 @@ function getWindowDimensions() {
   const { innerWidth: window_width, innerHeight: window_height } = window;
   return {
     window_width,
-    window_height
+    window_height,
   };
 }
 

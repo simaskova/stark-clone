@@ -1,0 +1,12 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+iframe {
+  pointer-events: none;
+}
+
+body {
+  margin: 0;
+}

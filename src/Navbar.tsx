@@ -10,7 +10,7 @@ import {
   MOBILE_BREAKPOINT,
   spacer_full,
   spacer_half,
-  useWindowDimensions
+  useWindowDimensions,
 } from "./App";
 
 const DivBurger = styled.div`
@@ -27,7 +27,7 @@ const StyledNavbar = styled.nav`
   font-weight: 700;
   max-width: 100%;
   height: 32px;
-  padding: ${spacer_half} ${spacer_full};
+  padding: 16px;
 
   a {
     display: flex;
@@ -50,7 +50,7 @@ const StyledNavbar = styled.nav`
 `;
 
 const NavbarMobile = styled(StyledNavbar)`
-  padding: 0 ${spacer_full} ;
+  padding: 0 16px;
   a {
     font-size: 25px;
   }
@@ -98,21 +98,26 @@ export default function Navbar() {
   return (
     <>
       {window_width < MOBILE_BREAKPOINT ? (
-        <NavbarMobile>
-          <DivBurger onClick={() => setShowOverlay(!showOverlay)}>
-            {!showOverlay? <AiOutlineMenu /> : <AiOutlineClose />}
-          </DivBurger>
-          <Link to="/">
-            <MdLocalFireDepartment />
-          </Link>
-          <Link to="/sign-up">
-            <ButtonSignUp>Sign up</ButtonSignUp>
-          </Link>
-        </NavbarMobile>
+        <>
+          <NavbarMobile>
+            <DivBurger onClick={() => setShowOverlay(!showOverlay)}>
+              {!showOverlay ? <AiOutlineMenu /> : <AiOutlineClose />}
+            </DivBurger>
+            <Link to="/">
+              <MdLocalFireDepartment />
+            </Link>
+            <Link to="/sign-up">
+              <ButtonSignUp>Sign up</ButtonSignUp>
+            </Link>
+          </NavbarMobile>
+          {showOverlay && (
+            <NavOverlay show={showOverlay} onLinkClick={setShowOverlay} />
+          )}
+        </>
       ) : (
         <NavbarDesktop>
           <DivPages>
-            <Link to="/home">
+            <Link to="/">
               <MdLocalFireDepartment />
             </Link>
             <Link to="/pricing">Pricing</Link>
@@ -129,9 +134,6 @@ export default function Navbar() {
             </Link>
           </DivUser>
         </NavbarDesktop>
-      )}
-      {showOverlay && (
-        <NavOverlay show={showOverlay} onLinkClick={setShowOverlay} />
       )}
     </>
   );
