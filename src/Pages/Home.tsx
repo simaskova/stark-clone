@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Footer from "../Footer";
 
 const DivContainer = styled.div``;
 const DivAbout = styled.div``;
@@ -10,6 +11,7 @@ export default function Home() {
     <DivContainer>
       <DivAbout>Home About</DivAbout>
       <Main>Home Main</Main>
+      <Footer />
     </DivContainer>
   );
 }
