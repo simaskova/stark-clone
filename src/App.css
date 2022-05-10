@@ -8,5 +8,7 @@ iframe {
 }
 
 body {
+  font-family: ArminGrotesk, ArminGroteskBlack, ArminGroteskSemiBold, sans-serif;
+  background: #f6f6eb;
   margin: 0;
 }

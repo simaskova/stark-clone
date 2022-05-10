@@ -21,10 +21,6 @@ const StyledNavbar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-transform: uppercase;
-  font-family: ${theme.fonts.basic};
-  font-size: 13px;
-  font-weight: 700;
   max-width: 100%;
   height: 32px;
   padding: 16px;
@@ -90,11 +86,6 @@ const ButtonSignUp = styled.button`
   color: ${theme.colors.white};
   border: none;
   border-radius: 4px;
-  text-transform: uppercase;
-  font-family: ${theme.fonts.basic};
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
   min-height: 32px;
   padding: 0 1rem;
   width: 100px;

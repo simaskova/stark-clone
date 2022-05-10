@@ -22,7 +22,7 @@ export const MOBILE_BREAKPOINT = 845;
 export const spacer_full = "16px";
 export const spacer_half = "8px";
 
-const DivContainer = styled.div`
+const DivWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -31,8 +31,38 @@ const DivContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: ${theme.colors.offwhite};
-  overflow: hidden;
+`;
+
+const DivContainer = styled.div`
+  width: 100%;
+  max-width: 840px;
+  overflow-x: hidden;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+`;
+
+export const StyledH1 = styled.h1`
+  font: ${theme.fonts.h1};
+`;
+export const StyledH2 = styled.h2`
+  font: ${theme.fonts.h2};
+`;
+export const StyledH3 = styled.h3`
+  font: ${theme.fonts.h3};
+`;
+export const StyledH4 = styled.h4`
+  font: ${theme.fonts.h4};
+`;
+export const StyledH5 = styled.h5`
+  font: ${theme.fonts.h5};
+`;
+export const StyledP = styled.p`
+  font: ${theme.fonts.p};
 `;
 
 const DivNavbar = styled.div`
@@ -68,23 +98,25 @@ export function useWindowDimensions() {
 function App() {
   return (
     <Router>
-      <DivContainer>
-        <DivNavbar>
-          <Navbar />
-        </DivNavbar>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/library" element={<Library />} />
-          <Route path="/support" element={<Support />} />
-          <Route path="/mac-beta" element={<MacBeta />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </DivContainer>
+      <DivWrapper>
+        <DivContainer>
+          <DivNavbar>
+            <Navbar />
+          </DivNavbar>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/library" element={<Library />} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/mac-beta" element={<MacBeta />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </DivContainer>
+      </DivWrapper>
     </Router>
   );
 }
