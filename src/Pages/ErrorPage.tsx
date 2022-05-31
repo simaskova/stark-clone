@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function ErrorPage() {
+const ErrorPage: React.FC = () => {
   return <div>ErrorPage</div>;
 }
+
+export default ErrorPage;

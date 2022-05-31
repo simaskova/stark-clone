@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function SignUp() {
+const SignUp: React.FC = () => {
   return <div>Sign Up</div>;
 }
+
+export default SignUp;

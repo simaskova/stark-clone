@@ -1,17 +1,43 @@
 import React from "react";
-import { MdLocalFireDepartment } from "react-icons/md";
 import styled from "styled-components";
+import StarkLogo from "./StarkLogo";
 
-const DivContainer = styled.div`
-  width: 100%;
-  background: inherit;
+const FooterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
-export default function Footer() {
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+`;
+
+
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center; 
+  line-height: 1rem;
+
+  p {
+    font-weight: bold;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0; 
+  }
+`;
+
+const Footer: React.FC = () => {
   return (
-    <DivContainer>
-      <div>
-        <div>
+    <FooterContainer>
+      <Row>
+        <Column>
           <p>Downloads</p>
           <ul>
             <li>Adobe XD</li>
@@ -19,8 +45,8 @@ export default function Footer() {
             <li>Figma</li>
             <li>Chrome</li>
           </ul>
-        </div>
-        <div>
+        </Column>
+        <Column>
           <p>Resources</p>
           <ul>
             <li>Blog</li>
@@ -30,8 +56,8 @@ export default function Footer() {
             <li>Mac Beta</li>
             <li>Release Notes</li>
           </ul>
-        </div>
-        <div>
+        </Column>
+        <Column>
           <p>Community</p>
           <ul>
             <li>Twitter</li>
@@ -41,8 +67,8 @@ export default function Footer() {
             <li>Meetup</li>
             <li>Dribble</li>
           </ul>
-        </div>
-        <div>
+        </Column>
+        <Column>
           <p>Support</p>
           <ul>
             <li>My Account</li>
@@ -50,8 +76,8 @@ export default function Footer() {
             <li>Contact Us</li>
             <li>Feature Requests</li>
           </ul>
-        </div>
-        <div>
+        </Column>
+        <Column>
           <p>Company</p>
           <ul>
             <li>Privacy Policy</li>
@@ -60,14 +86,16 @@ export default function Footer() {
             <li>Terms of Service</li>
             <li>Code of Conduct</li>
           </ul>
-        </div>
-      </div>
+        </Column>
+      </Row>
       <div>
         <h3>
           Cloned by simaskova from original by Stark Lab, inc. Copyright 2022
         </h3>
-        <MdLocalFireDepartment />
+        <StarkLogo />
       </div>
-    </DivContainer>
+    </FooterContainer>
   );
 }
+
+export default Footer;

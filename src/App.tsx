@@ -1,3 +1,11 @@
+/** 
+ * TODO
+ *  spojazdniť global styles
+ *  vyriešiť TS7016 error v App.tsx
+ *  opraviť stark logo
+ *  farba/shadow na buttone pri hoveri
+ * */ 
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import ErrorPage from "./Pages/ErrorPage";
@@ -7,70 +15,155 @@ import Support from "./Pages/Support";
 import Community from "./Pages/Community";
 import Library from "./Pages/Library";
 import MacBeta from "./Pages/MacBeta";
-import Footer from "./Footer";
 import Navbar from "./Navbar";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import styled from "styled-components";
 import { theme } from "./theme";
-import createGlobalStyle from "./global"; // for getting rid of the offwhite in corners
 import { useEffect, useState } from "react";
+import GlobalFonts from './fonts/fonts';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+library.add(faBars, faXmark);
+
 import "./App.css";
 
 export const DESKTOP_BREAKPOINT = 935;
 export const MOBILE_BREAKPOINT = 845;
-export const spacer_full = "16px";
-export const spacer_half = "8px";
+export const spacer_0_375 = "0.375rem";
+export const spacer_0_5 = ".5rem";
+export const spacer_1 = "1rem";
+export const spacer_1_5 = "1.5rem";
+export const spacer_2 = "2rem";
+export const spacer_2_75 = "2.75rem";
+export const spacer_3 = "3rem";
+export const spacer_4 = "4rem";
+export const spacer_5 = "5rem";
 
 const DivWrapper = styled.div`
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
+  padding: 0 ${spacer_1_5};
   height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const DivContainer = styled.div`
+export const DivContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  max-width: 840px;
+  max-width: 960px;
   overflow-x: hidden;
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  color: ${theme.colors.crowblackblue};
 `;
 
 export const StyledH1 = styled.h1`
-  font: ${theme.fonts.h1};
+  margin: 0;
+  font-family: "Armin Grotesk Black";
+  font-size: 2.5rem;
+  line-height: 44px;
+  letter-spacing: -.02em;
+
+  @media (min-width: 400px) {
+    font-size: 3rem;
+    line-height: 54px;
+  };
+
+  @media (min-width: 600px) {
+    font-size: 5.375rem;
+    line-height: 96px;
+  };
 `;
 export const StyledH2 = styled.h2`
-  font: ${theme.fonts.h2};
+  margin: 0;
+  font-family: "Armin Grotesk Black";
+  font-size: 1.75rem;
+  line-height: 31px;
+  /* font: normal normal 900 1.75rem/31px ${theme.fontFamilies.h2}; */
+  letter-spacing: -.01em;
+
+  @media (min-width: 400px) {
+  font-size: 2rem;
+  line-height: 35px;
+  };
+
+  @media (min-width: 600px) {
+  font-size: 3rem;
+  line-height: 53px;
+  };
 `;
-export const StyledH3 = styled.h3`
-  font: ${theme.fonts.h3};
+export const StyledH3 = styled.h3` /* props in styled components? napr. pre Card.tsx potrebuje StyledH3 inu farbu */
+  margin: 0.286rem 0 1rem 0;
+  font-family: "Roboto Mono";
+  color: ${theme.colors.mediumblue};
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 `;
 export const StyledH4 = styled.h4`
-  font: ${theme.fonts.h4};
+  font-family: "Armin Grotesk Black";
+  font-size: 1.375rem;
+  line-height: 24px;
+  letter-spacing: -.01em;
+
+  @media (min-width: 400px) {
+    font-size: 1.5rem;
+  };
+
+  @media (min-width: 600px) {
+    font-size: 1.5rem;
+    line-height: 26px;
+  };
 `;
 export const StyledH5 = styled.h5`
-  font: ${theme.fonts.h5};
+  font-family: "Armin Grotesk Semibold";
+  color: ${theme.colors.dimgray};
+  font-size: 1rem;
+  line-height: 24px;
+  letter-spacing: .02em;
 `;
 export const StyledP = styled.p`
-  font: ${theme.fonts.p};
+  font-family: "Armin Grotesk Regular";
+  color: ${theme.colors.dimgray};
+  font-size: 1.25rem;
+`;
+
+export const StyledA = styled.a`
+  font-family: "Armin Grotesk Semibold";
+  color: ${theme.colors.mediumblue};
+  font-size: 1rem;
+  line-height: 140%;
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
 `;
 
 const DivNavbar = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  max-width: 840px;
+  padding: ${spacer_1};
 `;
 
-function getWindowDimensions() {
+export const Main = styled.main`
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+`;
+
+export interface Window {
+  window_width: number;
+  window_height: number;
+}
+
+function getWindowDimensions(): Window {
   const { innerWidth: window_width, innerHeight: window_height } = window;
   return {
     window_width,
@@ -78,7 +171,7 @@ function getWindowDimensions() {
   };
 }
 
-export function useWindowDimensions() {
+export function useWindowDimensions(): Window {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
@@ -95,10 +188,16 @@ export function useWindowDimensions() {
   return windowDimensions;
 }
 
-function App() {
+export function useScrollToElement(event: React.MouseEvent<HTMLButtonElement>, scrollRef: React.RefObject<HTMLDivElement>) {
+  event.preventDefault();
+  scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
+}
+
+const App: React.FC = () => {
   return (
     <Router>
       <DivWrapper>
+      <GlobalFonts />
         <DivContainer>
           <DivNavbar>
             <Navbar />
