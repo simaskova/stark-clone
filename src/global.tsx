@@ -11,6 +11,6 @@ export default createGlobalStyle`
     }
     #root{
         margin:0 auto;
-        background: ${theme.colors.white};
+        background: ${theme.colors.ghostwhite};
     }
 `;

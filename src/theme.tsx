@@ -1,12 +1,15 @@
 export const theme = {
   colors: {
-    white: "#ffffff",
-    offwhite: "#f6f6eb",
-    blue: "#381fd1",
+    ghostwhite: "#f5f4fd",
+    oldlace: "#f6f6eb",
+    crowblackblue: "#10284b",
+    midnightblue: "#193f76",
+    gainsboro: "#e5e5e6",
+    mediumblue: "#3a22d1",
+    dimgray: "#5d5d5f",
     yellow: "#fedb62",
     black: "#000000",
     violet: "#5740e2",
-    lightgray: "#e5e5e6",
   },
 
   colorsMacBeta: {
@@ -15,19 +18,13 @@ export const theme = {
     coral: "#fc6f6b",
   },
 
-  // text-transform: uppercase;
-  // font-family: ${theme.fonts.basic};
-  // font-size: 13px;
-  // font-weight: 700;
-  // letter - spacing: 0.1em;
-
-  fonts: {
-    h1: "normal normal 900 5.375rem/96px 'Poppins', sans-serif",
-    h2: "normal normal 700 1rem 'RobotoMono',sans-serif",
-    h3: "",
-    h4: "",
-    h5: "",
-    p: "normal normal 400 1.25rem/30px ",
-    letterSpacing: "-0.02em",
+  fontFamilies: {
+    h1: "'Poppins', sans-serif",
+    h2: "'Poppins', sans-serif",
+    h3: "'Roboto Mono', sans-serif",
+    h4: "'Poppins', sans-serif",
+    h5: "'Poppins', sans-serif",
+    p: "'Poppins', sans-serif", /* nájsť podľa tvaru G (šípka) */
+    nav: "'Poppins', sans-serif", /* font-family rovnaká ako p */
   },
 };

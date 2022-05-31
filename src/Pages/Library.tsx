@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function Library() {
+const Library: React.FC = () => {
   return <div>Library</div>;
 }
+
+export default Library;

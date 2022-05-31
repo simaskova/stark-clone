@@ -1,8 +1,7 @@
-import React, { useCallback } from "react";
+import React, { Dispatch, SetStateAction, useCallback } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { theme } from "./theme";
-import { spacer_full, spacer_half } from "./App";
 
 // style
 // animation + transition
@@ -12,12 +11,11 @@ const DivContainer = styled.div`
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  border-top: 1px solid ${theme.colors.lightgray};
+  border-top: 1px solid ${theme.colors.gainsboro};
   padding: 16px;
   overflow: hidden;
 
   a {
-    font-family: ${theme.fonts.basic};
     font-size: 0.8em;
     font-weight: 500;
     text-transform: uppercase;
@@ -27,12 +25,18 @@ const DivContainer = styled.div`
   }
 `;
 
-export default function NavOverlay({ show, onLinkClick }) {
+type Props = {
+  show: boolean,
+  onLinkClick: Dispatch<SetStateAction<boolean>>
+}
+
+const NavOverlay: React.FC<Props> = (props: Props) => { //Dispatch<SetStateAction<boolean>>
   const handleClick = useCallback(
-    (event) => {
-      onLinkClick(!show);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    (_event: React.MouseEvent<HTMLAnchorElement>) => {
+      props.onLinkClick(!props.show);
     },
-    [onLinkClick]
+    [props.onLinkClick]
   );
 
   return (
@@ -61,3 +65,5 @@ export default function NavOverlay({ show, onLinkClick }) {
     </DivContainer>
   );
 }
+
+export default NavOverlay;

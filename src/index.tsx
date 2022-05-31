@@ -19,15 +19,14 @@
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 
 import { StrictMode } from "react";
-import * as ReactDOMClient from "react-dom/client";
+import { createRoot } from "react-dom/client";
 
 import App from "./App";
 
-const rootElement = document.getElementById("root");
-const root = ReactDOMClient.createRoot(rootElement);
-
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const root = createRoot(document.getElementById("root")!);
 root.render(
-  <StrictMode>
+  <StrictMode>  
     <App />
   </StrictMode>
 );

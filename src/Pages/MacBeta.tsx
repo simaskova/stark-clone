@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function MacBeta() {
+const MacBeta: React.FC = () => {
   return <div>MacBeta</div>;
 }
+
+export default MacBeta;
