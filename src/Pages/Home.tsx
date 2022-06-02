@@ -1,7 +1,7 @@
-import React, { Suspense, createRef, useState, Ref } from "react";
+import React, { Suspense, createRef } from "react";
 import styled from "styled-components";
-import Footer from "../Footer";
 import Button from "../Components/Button";
+import { useNavigate } from "react-router-dom";
 import {
   StyledH2,
   StyledH3,
@@ -43,7 +43,7 @@ const DivGrid = styled.div`
     }
 `;
 
-const DivGridTwo = styled(DivGrid)`
+const DivGridTwo = styled((props) => <DivGrid {...props} />)`
   margin-top: 4.5rem;
   grid-template-columns: 1fr;
   row-gap: 4rem;
@@ -58,7 +58,7 @@ const DivGridTwo = styled(DivGrid)`
   };
 `;
 
-const DivGridThree = styled(DivGrid)`
+const DivGridThree = styled((props) => <DivGrid {...props} />)`
   grid-template-columns: 1fr;
   text-align: center;
   margin-top: 4rem;
@@ -73,6 +73,7 @@ const DivGridThree = styled(DivGrid)`
 `;
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
   const features_ref = createRef<HTMLDivElement>();
 
   return (
@@ -87,6 +88,7 @@ const Home: React.FC = () => {
           and get started today!" 
           button1text="Sign up for free" 
           button2text="Learn more" 
+          button1handler={() => navigate(`/sign-up`)}
           button2handler={(e: React.MouseEvent<HTMLButtonElement>) => useScrollToElement(e, features_ref)}
         />
       </Suspense>
@@ -234,10 +236,9 @@ const Home: React.FC = () => {
               </svg>
             </DivGridTwo>
           </div>
-          <Button variant="dark" text="Sign up for free" minHeight={`${spacer_2_75}`} margin={`${spacer_5}`} padding={`${spacer_0_375} ${spacer_1_5}}`} />
+          <Button buttonHandler={() => navigate(`/sign-up`)} variant="dark" text="Sign up for free" minHeight={`${spacer_2_75}`} margin={`${spacer_5}`} padding={`${spacer_0_375} ${spacer_1_5}}`} />
         </section>
       </Main>
-      <Footer />
     </DivContainer>
   );
 }

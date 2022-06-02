@@ -1,8 +1,6 @@
 import React, { Suspense } from "react";
-import { DivContainer, StyledH3, StyledH2, StyledP, StyledH4, Main } from "../App";
-import Button from "../Components/Button";
+import { DivContainer, Main } from "../App";
 import Header from "../Components/Header";
-import Footer from "../Footer";
 
 const Blog: React.FC = () => {
   return (
@@ -16,7 +14,6 @@ const Blog: React.FC = () => {
       </Suspense>
       <Main>
       </Main>
-      <Footer />
     </DivContainer>
   );
 }

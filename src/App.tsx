@@ -22,11 +22,11 @@ import styled from "styled-components";
 import { theme } from "./theme";
 import { useEffect, useState } from "react";
 import GlobalFonts from './fonts/fonts';
+import "./App.css";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import Footer from "./Components/Footer";
 library.add(faBars, faXmark);
-
-import "./App.css";
 
 export const DESKTOP_BREAKPOINT = 935;
 export const MOBILE_BREAKPOINT = 845;
@@ -41,7 +41,6 @@ export const spacer_4 = "4rem";
 export const spacer_5 = "5rem";
 
 const DivWrapper = styled.div`
-  position: relative;
   top: 0;
   left: 0;
   padding: 0 ${spacer_1_5};
@@ -49,6 +48,7 @@ const DivWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* border: 2px solid pink; */
 `;
 
 export const DivContainer = styled.div`
@@ -59,6 +59,7 @@ export const DivContainer = styled.div`
   max-width: 960px;
   overflow-x: hidden;
   color: ${theme.colors.crowblackblue};
+  /* border: 2px solid green; */
 `;
 
 export const StyledH1 = styled.h1`
@@ -188,7 +189,7 @@ export function useWindowDimensions(): Window {
   return windowDimensions;
 }
 
-export function useScrollToElement(event: React.MouseEvent<HTMLButtonElement>, scrollRef: React.RefObject<HTMLDivElement>) {
+export function useScrollToElement(event: React.MouseEvent<HTMLButtonElement>, scrollRef: React.RefObject<HTMLDivElement>): void {
   event.preventDefault();
   scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
 }
@@ -215,6 +216,7 @@ const App: React.FC = () => {
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </DivContainer>
+        <Footer />
       </DivWrapper>
     </Router>
   );

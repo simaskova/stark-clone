@@ -122,7 +122,7 @@ const Navbar: React.FC = () => {
               <StarkLogo />
             </Link>
             <Link to="/sign-up">
-              <Button  variant="dark" text="Sign up" padding={`0.5rem calc(1 * ${spacer_1})`}></Button>
+              <Button  variant="dark" text="Sign up" padding={`0.5rem calc(1 * ${spacer_1})`} buttonHandler={() => ""}></Button>
             </Link>
           </NavbarMobile>
           {showOverlay && (
@@ -159,7 +159,7 @@ const Navbar: React.FC = () => {
               Log in
             </Link>
             <Link to="/sign-up">
-              <Button variant="dark" text="Sign up" minHeight={`${spacer_2}`} margin="0 0 0 1rem" padding={`0 ${spacer_1}`}></Button>
+              <Button variant="dark" text="Sign up" minHeight={`${spacer_2}`} margin="0 0 0 1rem" padding={`0 ${spacer_1}`} buttonHandler={() => ""} ></Button>
             </Link>
           </DivUser>
         </NavbarDesktop>

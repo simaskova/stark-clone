@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { StyledH3, StyledH1, StyledP, spacer_1, spacer_0_375, spacer_1_5, spacer_2_75 } from "../App";
+import { StyledH3, StyledH1, StyledP, spacer_0_375, spacer_1_5, spacer_2_75 } from "../App";
 
 const Button = React.lazy(() => import("../Components/Button"));
 
@@ -22,8 +22,7 @@ interface PropsHeader {
   button2handler?: (e: React.MouseEvent<HTMLButtonElement>) => void,
 } 
 
-const Header = (props: PropsHeader) => {
-
+const Header: React.FC<PropsHeader> = (props: PropsHeader)=> {
   return (
     <WrapperHeader>
       <StyledH3>{props.h3text}</StyledH3>

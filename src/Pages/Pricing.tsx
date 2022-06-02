@@ -1,6 +1,5 @@
-import React, { createRef, Suspense } from "react";
+import React, { createRef, Suspense, useState } from "react";
 import styled from "styled-components";
-import Footer from "../Footer";
 import {
   StyledH2,
   StyledH3,
@@ -12,7 +11,7 @@ import {
 import pricingPlansData from "../pricingPlans";
 import { CardStyledH3 } from "../Components/Card";
 
-const Button = React.lazy(() => import("../Components/Button"));
+// const Button = React.lazy(() => import("../Components/Button"));
 const Card = React.lazy(() => import("../Components/Card"));
 const Header = React.lazy(() => import("../Components/Header"));
 
@@ -24,12 +23,16 @@ const Main = styled.main`
   text-align: center;
 `;
 
-const StyledTitle = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
-  height: fit-content;
+// const StyledTitle = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start;
+//   justify-content: space-around;
+//   height: fit-content;
+// `;
+
+const PricingStyledA = styled((props) => <StyledA {...props} />)`
+  text-transform: underline;
 `;
 
 const StyledDivCards = styled.div`
@@ -49,6 +52,7 @@ const DivCardLoader = styled.div`
 `;
 
 const Pricing: React.FC = () => {
+      const [pricing, setPricing] = useState("Monthly");
       const compare_plans_ref = createRef<HTMLDivElement>();
       // const Card = React.lazy(() => import("../Components/Card"));
       return (
@@ -68,7 +72,7 @@ const Pricing: React.FC = () => {
               <StyledP>
               With three different plans, Stark is sure to have one that checks all of the boxes, whether it’s just for you or your entire team.
               </StyledP>
-              <StyledA href="#">View Monthly Prices</StyledA> {/** pridať link */}
+              <PricingStyledA onClick={() => setPricing(pricing === "Monthly" ? "Yearly" : "Monthly")}>View {pricing} Prices</PricingStyledA>
               
               <Suspense fallback={
                 <DivCardLoader>
@@ -112,7 +116,6 @@ const Pricing: React.FC = () => {
               </div>
             </section>
           </Main>
-        <Footer />
       </DivContainer>
   );
 }

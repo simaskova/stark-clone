@@ -1,8 +1,6 @@
 import React, { Suspense } from "react";
-import { DivContainer, Main, StyledH3, StyledH2, StyledP, StyledH4 } from "../App";
-import Button from "../Components/Button";
+import { DivContainer, Main } from "../App";
 import Header from "../Components/Header";
-import Footer from "../Footer";
 
 const Community: React.FC = () => {
   return (
@@ -18,7 +16,6 @@ const Community: React.FC = () => {
       </Suspense>
       <Main>
       </Main>
-      <Footer />
     </DivContainer>
   );
 }

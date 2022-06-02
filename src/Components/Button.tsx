@@ -6,7 +6,7 @@ import { theme } from "../theme";
 type Props = {
     text: string;
     variant: string;
-    buttonHandler?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    buttonHandler: ((e: React.MouseEvent<HTMLButtonElement>) => void) | undefined;
     id?: string;
     width?: string;
     margin?: string;
@@ -42,8 +42,7 @@ const Button: React.FC<Props> = (props: Props) => {
     `;
         
     return (
-        <StyledButton onClick={(e: React.MouseEvent<HTMLButtonElement>) => {props.buttonHandler(e); setButtonClicked(buttonClicked)}} name={props.text} text={props.text} variant={props.variant} id={props.id} >{props.text}</StyledButton>
-        
+        <StyledButton onClick={(e: React.MouseEvent<HTMLButtonElement>) => {props.buttonHandler ? props.buttonHandler(e) : ""; setButtonClicked(buttonClicked)}} name={props.text} text={props.text} variant={props.variant} id={props.id} >{props.text}</StyledButton>
     )
 }
 
