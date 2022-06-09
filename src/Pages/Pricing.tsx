@@ -15,7 +15,6 @@ import { CardStyledH3 } from "../Components/Card";
 const Card = React.lazy(() => import("../Components/Card"));
 const Header = React.lazy(() => import("../Components/Header"));
 
-
 const Main = styled.main`
   display: flex;
   flex-direction: column;
@@ -52,72 +51,97 @@ const DivCardLoader = styled.div`
 `;
 
 const Pricing: React.FC = () => {
-      const [pricing, setPricing] = useState("Monthly");
-      const compare_plans_ref = createRef<HTMLDivElement>();
-      // const Card = React.lazy(() => import("../Components/Card"));
-      return (
-        <DivContainer>
-          <Suspense fallback={null}>
-            <Header 
-              h3text="Pricing Plans" 
-              h1text="Upgrade your plan. And designs." 
-              ptext="Stark helps you sign your name on a job well done. Pricier than a news subscription. Cheaper than a lawsuit.!" 
-              button1text="Find the plan for you" 
-              button1handler={(e: React.MouseEvent<HTMLButtonElement>) => useScrollToElement(e, compare_plans_ref)}
-            />
-          </Suspense>
-          <Main>
-            <section>
-              <StyledH2>Plan Pricing</StyledH2>
-              <StyledP>
-              With three different plans, Stark is sure to have one that checks all of the boxes, whether it’s just for you or your entire team.
-              </StyledP>
-              <PricingStyledA onClick={() => setPricing(pricing === "Monthly" ? "Yearly" : "Monthly")}>View {pricing} Prices</PricingStyledA>
-              
-              <Suspense fallback={
-                <DivCardLoader>
-                  <CardStyledH3>
-                    Loading pricing plans...
-                  </CardStyledH3>
-                </DivCardLoader>
-                }
-              >
-                <StyledDivCards>
-                  {pricingPlansData.map((data, key) => {
-                    return (
-                      <Card key={key} type={data.type} price={data.price} about={data.about} includes={data.includes} buttonText={data.buttonText} />
-                    )
-                  })}
-                </StyledDivCards>
-              </Suspense>
+  const [pricing, setPricing] = useState("Monthly");
+  const compare_plans_ref = createRef<HTMLDivElement>();
+  // const Card = React.lazy(() => import("../Components/Card"));
+  return (
+    <DivContainer>
+      <Suspense fallback={null}>
+        <Header
+          h3text="Pricing Plans"
+          h1text="Upgrade your plan. And designs."
+          ptext="Stark helps you sign your name on a job well done. Pricier than a news subscription. Cheaper than a lawsuit.!"
+          button1text="Find the plan for you"
+          button1handler={(e: React.MouseEvent<HTMLButtonElement>) =>
+            useScrollToElement(e, compare_plans_ref)
+          }
+          twirlyArrow={false}
+        />
+      </Suspense>
+      <Main>
+        <section>
+          <StyledH2>Plan Pricing</StyledH2>
+          <StyledP>
+            With three different plans, Stark is sure to have one that checks
+            all of the boxes, whether it’s just for you or your entire team.
+          </StyledP>
+          <PricingStyledA
+            onClick={() =>
+              setPricing(pricing === "Monthly" ? "Yearly" : "Monthly")
+            }
+          >
+            View {pricing} Prices
+          </PricingStyledA>
 
-            </section>
-            <section>
-              <StyledH2 ref={compare_plans_ref}>Compare Plans</StyledH2>
+          <Suspense
+            fallback={
+              <DivCardLoader>
+                <CardStyledH3>Loading pricing plans...</CardStyledH3>
+              </DivCardLoader>
+            }
+          >
+            <StyledDivCards>
+              {pricingPlansData.map((data, key) => {
+                return (
+                  <Card
+                    key={key}
+                    type={data.type}
+                    price={data.price}
+                    about={data.about}
+                    includes={data.includes}
+                    buttonText={data.buttonText}
+                  />
+                );
+              })}
+            </StyledDivCards>
+          </Suspense>
+        </section>
+        <section>
+          <StyledH2 ref={compare_plans_ref}>Compare Plans</StyledH2>
+          <StyledP>
+            Check out all of the features that differ per plan to find one that
+            fits what you’re looking for. All of our plans are easy to switch,
+            any time.
+          </StyledP>
+        </section>
+        <section>
+          <StyledH3>Features</StyledH3>
+          <StyledH2>Coming soon to Stark</StyledH2>
+          {/* 1 x 2 */}
+          <div>
+            <div>
+              <StyledH3>Type</StyledH3>
+              <StyledH2>Deep Type Analysis</StyledH2>
               <StyledP>
-              Check out all of the features that differ per plan to find one that fits what you’re looking for. All of our plans are easy to switch, any time.
+                Deep dives of the typography in your design document letting you
+                know the appropriate font size, weight and color for your
+                typeface.
               </StyledP>
-            </section>
-            <section>
-              <StyledH3>Features</StyledH3>
-              <StyledH2>Coming soon to Stark</StyledH2>
-              {/* 1 x 2 */}
-              <div>
-                <div>
-                  <StyledH3>Type</StyledH3>
-                  <StyledH2>Deep Type Analysis</StyledH2>
-                  <StyledP>Deep dives of the typography in your design document letting you know the appropriate font size, weight and color for your typeface.</StyledP>
-                </div>
-                <div>
-                  <StyledH3>Image</StyledH3>
-                  <StyledH2>Alt Text</StyledH2>
-                  <StyledP>Set image descriptions for code right in your design files, ensuring developer handoff assets are seamless, and every image for customers is accessible.</StyledP>
-                </div>
-              </div>
-            </section>
-          </Main>
-      </DivContainer>
+            </div>
+            <div>
+              <StyledH3>Image</StyledH3>
+              <StyledH2>Alt Text</StyledH2>
+              <StyledP>
+                Set image descriptions for code right in your design files,
+                ensuring developer handoff assets are seamless, and every image
+                for customers is accessible.
+              </StyledP>
+            </div>
+          </div>
+        </section>
+      </Main>
+    </DivContainer>
   );
-}
+};
 
 export default Pricing;

@@ -4,18 +4,17 @@ import Header from "../Components/Header";
 
 const Blog: React.FC = () => {
   return (
-    
     <DivContainer>
       <Suspense fallback={null}>
-        <Header 
-          h3text="blog" 
-          h1text="Stories, resources, and material making a Stark difference" 
+        <Header
+          h3text="blog"
+          h1text="Stories, resources, and material making a Stark difference"
+          twirlyArrow={false}
         />
       </Suspense>
-      <Main>
-      </Main>
+      <Main></Main>
     </DivContainer>
   );
-}
+};
 
 export default Blog;

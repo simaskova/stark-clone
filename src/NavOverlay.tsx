@@ -1,3 +1,5 @@
+// PREFIXED
+
 import React, { Dispatch, SetStateAction, useCallback } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -7,7 +9,12 @@ import { theme } from "./theme";
 // animation + transition
 
 const DivContainer = styled.div`
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   width: 100vw;
   height: 100vh;

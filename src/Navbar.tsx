@@ -1,3 +1,5 @@
+// PREFIXED
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -5,12 +7,11 @@ import { theme } from "./theme";
 import NavOverlay from "./NavOverlay";
 import {
   MOBILE_BREAKPOINT,
-  spacer_1,
   useWindowDimensions,
   spacer_2,
 } from "./App";
 import StarkLogo from "./StarkLogo";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Button = React.lazy(() => import("./Components/Button"));
 
@@ -19,8 +20,14 @@ const DivBurger = styled.div`
 `;
 
 const StyledNavbar = styled.nav`
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   width: 100%;
   height: 100%;
@@ -33,7 +40,6 @@ const StyledNavbar = styled.nav`
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-
 
   a {
     color: ${theme.colors.crowblackblue};
@@ -57,7 +63,6 @@ const StyledNavbar = styled.nav`
       font-size: 13px;
       font-weight: 700;
     }
-    
   }
 `;
 
@@ -67,13 +72,21 @@ const NavbarMobile = styled((props) => <StyledNavbar {...props} />)`
   }
 
   & :nth-child(1) {
+    -webkit-box-flex: 5;
+    -ms-flex: 5;
     flex: 5;
   }
   & :nth-child(2) {
     position: absolute;
     width: calc(100vw - 7rem);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 
     i {
@@ -81,6 +94,8 @@ const NavbarMobile = styled((props) => <StyledNavbar {...props} />)`
     }
   }
   & :nth-child(3) {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1;
   }
 `;
@@ -88,8 +103,14 @@ const NavbarMobile = styled((props) => <StyledNavbar {...props} />)`
 const NavbarDesktop = styled((props) => <StyledNavbar {...props} />)``;
 
 const DivPages = styled.div`
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 
   a {
@@ -98,12 +119,18 @@ const DivPages = styled.div`
 `;
 
 const DivUser = styled.div`
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
-  
+
   button {
-    margin-left: ${spacer_1};
+    margin-left: 1rem;
   }
 `;
 
@@ -115,14 +142,29 @@ const Navbar: React.FC = () => {
       {window_width < MOBILE_BREAKPOINT ? (
         <>
           <NavbarMobile>
-            <DivBurger style={{"height": "100%"}} >
-              {!showOverlay ? <FontAwesomeIcon icon="bars" onClick={() => setShowOverlay(!showOverlay)} /> : <FontAwesomeIcon icon="xmark" onClick={() => setShowOverlay(!showOverlay)} />}
+            <DivBurger style={{ height: "100%" }}>
+              {!showOverlay ? (
+                <FontAwesomeIcon
+                  icon="bars"
+                  onClick={() => setShowOverlay(!showOverlay)}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon="xmark"
+                  onClick={() => setShowOverlay(!showOverlay)}
+                />
+              )}
             </DivBurger>
             <Link to="/">
               <StarkLogo />
             </Link>
             <Link to="/sign-up">
-              <Button  variant="dark" text="Sign up" padding={`0.5rem calc(1 * ${spacer_1})`} buttonHandler={() => ""}></Button>
+              <Button
+                variant="dark"
+                text="Sign up"
+                padding={`0.5rem calc(1 * 1rem)`}
+                buttonHandler={() => ""}
+              ></Button>
             </Link>
           </NavbarMobile>
           {showOverlay && (
@@ -132,40 +174,33 @@ const Navbar: React.FC = () => {
       ) : (
         <NavbarDesktop>
           <DivPages>
-            <Link to="/" >
+            <Link to="/">
               <StarkLogo />
             </Link>
-            <Link to="/pricing">
-              Pricing
-            </Link>
-            <Link to="/blog">
-              Blog
-            </Link>
-            <Link to="/community">
-              Community
-            </Link>
-            <Link to="/library">
-              Library
-            </Link>
-            <Link to="/support">
-              Support
-            </Link>
-            <Link to="/mac-beta">
-              Mac Beta
-            </Link>
+            <Link to="/pricing">Pricing</Link>
+            <Link to="/blog">Blog</Link>
+            <Link to="/community">Community</Link>
+            <Link to="/library">Library</Link>
+            <Link to="/support">Support</Link>
+            <Link to="/mac-beta">Mac Beta</Link>
           </DivPages>
           <DivUser>
-            <Link to="/login"> 
-              Log in
-            </Link>
+            <Link to="/login">Log in</Link>
             <Link to="/sign-up">
-              <Button variant="dark" text="Sign up" minHeight={`${spacer_2}`} margin="0 0 0 1rem" padding={`0 ${spacer_1}`} buttonHandler={() => ""} ></Button>
+              <Button
+                variant="dark"
+                text="Sign up"
+                minHeight={`${spacer_2}`}
+                margin="0 0 0 1rem"
+                padding={`0 1rem`}
+                buttonHandler={() => ""}
+              ></Button>
             </Link>
           </DivUser>
         </NavbarDesktop>
       )}
     </>
   );
-}
+};
 
 export default Navbar;
